@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vanna Noun — Renoun Creation
 
-## Getting Started
+Portfolio + booking site for **Vanna Noun**, Director of Photography.
+Photography & cinematography, styled around a **Kodak Vision3 teal & orange** cinematic palette —
+cozy, contrasty, complementary.
 
-First, run the development server:
+Built with **Next.js (App Router) + Tailwind CSS v4 + TypeScript**.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project map
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Path | What it is |
+| --- | --- |
+| `app/page.tsx` | Home — hero, featured gallery, services, cinematography, about teaser, CTA |
+| `app/portfolio/page.tsx` | Filterable photo grid + cinematography (YouTube) |
+| `app/about/page.tsx` | Bio + the three C's (cozy / contrasty / complementary) |
+| `app/book/page.tsx` | Booking form with calendar date picker |
+| `app/contact/page.tsx` | Contact form + social links |
+| `app/api/book`, `app/api/contact` | Form endpoints → email via Resend |
+| `lib/siteConfig.ts` | **Edit here:** name, email, socials, session types, time slots |
+| `lib/portfolio.ts` | **Edit here:** photos + cinematography videos |
+| `app/globals.css` | Theme tokens (colors, fonts) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Swapping in real content
 
-## Learn More
+- **Photos** — edit `lib/portfolio.ts`. Replace each `src` with a hosted image URL or drop files in
+  `public/` and reference them as `/my-photo.jpg`. Add hosts to `next.config.ts` `remotePatterns`
+  if using a new domain. (Current placeholders come from picsum.photos.)
+- **Videos** — in the `films` array, replace `youtubeId` with real IDs from
+  [@renouncreation](https://www.youtube.com/@renouncreation).
+- **Contact / socials / session types** — all in `lib/siteConfig.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+## Enabling booking + contact emails
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Forms already work — until a Resend key is set, submissions are validated and **logged** server-side
+(and the visitor still sees a success message) instead of being emailed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To go live:
 
-## Deploy on Vercel
+1. Create a free account at [resend.com](https://resend.com) and grab an API key.
+2. Copy `.env.example` → `.env.local` and fill in:
+   ```
+   RESEND_API_KEY=re_...
+   RESEND_FROM="Renoun Creation <onboarding@resend.dev>"
+   BOOKING_TO_EMAIL=imrsteelo@gmail.com
+   ```
+   `onboarding@resend.dev` works for testing; for production, verify a sending domain in Resend and
+   use an address on it.
+3. Restart `npm run dev`. Booking + contact submissions now email `BOOKING_TO_EMAIL`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploying
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy to [Vercel](https://vercel.com): import the repo, add the same env vars in project settings.
