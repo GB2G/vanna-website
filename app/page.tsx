@@ -90,7 +90,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="In motion"
             title="Cinematography"
-            subtitle="Placeholder reels from @renouncreation — real uploads drop straight in."
+            subtitle="Latest shorts from @renouncreation — more films in production."
           />
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -108,8 +108,8 @@ export default function Home() {
           <Reveal>
             <div className="grain relative aspect-[4/5] overflow-hidden rounded-2xl border border-line">
               <Image
-                src={featuredPhotos[4]?.src ?? featuredPhotos[0].src}
-                alt="Vanna Noun on location"
+                src="/vanna-avatar.jpg"
+                alt="Vanna Noun"
                 fill
                 sizes="(max-width: 768px) 90vw, 40vw"
                 className="object-cover"

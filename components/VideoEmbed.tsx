@@ -10,11 +10,19 @@ import type { Film } from "@/lib/portfolio";
  */
 export function VideoEmbed({ film }: { film: Film }) {
   const [playing, setPlaying] = useState(false);
-  const thumb = `https://i.ytimg.com/vi/${film.youtubeId}/hqdefault.jpg`;
+  // Shorts have a vertical "oardefault" thumbnail; standard videos use hqdefault.
+  const thumb = film.vertical
+    ? `https://i.ytimg.com/vi/${film.youtubeId}/oardefault.jpg`
+    : `https://i.ytimg.com/vi/${film.youtubeId}/hqdefault.jpg`;
+  const tag = film.meta ?? (film.vertical ? "Short" : "Film");
 
   return (
-    <figure className="group grain overflow-hidden rounded-2xl border border-line bg-surface">
-      <div className="relative aspect-video">
+    <figure
+      className={`group grain overflow-hidden rounded-2xl border border-line bg-surface ${
+        film.vertical ? "mx-auto w-full max-w-[320px]" : ""
+      }`}
+    >
+      <div className={`relative ${film.vertical ? "aspect-[9/16]" : "aspect-video"}`}>
         {playing ? (
           <iframe
             className="absolute inset-0 h-full w-full"
@@ -34,7 +42,7 @@ export function VideoEmbed({ film }: { film: Film }) {
               src={thumb}
               alt={film.title}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 320px"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <span className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
@@ -52,7 +60,7 @@ export function VideoEmbed({ film }: { film: Film }) {
           <p className="mt-1 text-sm text-muted">{film.role}</p>
         </div>
         <span className="shrink-0 text-xs uppercase tracking-[0.2em] text-teal-glow/80">
-          {film.year}
+          {tag}
         </span>
       </figcaption>
     </figure>

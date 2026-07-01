@@ -3,7 +3,6 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
-import { featuredPhotos } from "@/lib/portfolio";
 import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export default function AboutPage() {
         <Reveal>
           <div className="grain relative aspect-[4/5] overflow-hidden rounded-3xl border border-line">
             <Image
-              src={featuredPhotos[0].src}
+              src="/vanna-avatar.jpg"
               alt="Portrait of Vanna Noun"
               fill
               priority

@@ -66,17 +66,31 @@ export const photoCategories: PhotoCategory[] = [
 
 export interface Film {
   id: string;
-  /** YouTube video ID — replace with real uploads. */
+  /** YouTube video ID. */
   youtubeId: string;
   title: string;
   role: string;
-  year: string;
+  /** True for vertical YouTube Shorts (9:16), false/undefined for 16:9. */
+  vertical?: boolean;
+  /** Small tag shown on the card (e.g. a stat or format). */
+  meta?: string;
 }
 
-// Placeholder reels. Replace `youtubeId` with videos from @renouncreation.
+// Real content scraped from https://youtube.com/@renouncreation (2 Shorts).
+// When Vanna posts long-form films, add them here with `vertical: false`.
 export const films: Film[] = [
-  { id: "f1", youtubeId: "ScMzIvxBSi4", title: "Golden Hour — Short Film", role: "Director of Photography", year: "2025" },
-  { id: "f2", youtubeId: "aqz-KE-bpKQ", title: "Brand Story — Commercial", role: "Cinematographer", year: "2025" },
-  { id: "f3", youtubeId: "ysz5S6PUM-U", title: "In Motion — Music Video", role: "DOP / Colorist", year: "2024" },
-  { id: "f4", youtubeId: "hFZFjoX2cGg", title: "Portrait of a City — Documentary", role: "Cinematographer", year: "2024" },
+  {
+    id: "f1",
+    youtubeId: "vWpocovjzsM",
+    title: "Enjoy everything around you while you can",
+    role: "Cinematography · shot on Fuji X-T3",
+    vertical: true,
+  },
+  {
+    id: "f2",
+    youtubeId: "g59g-GYPmhU",
+    title: "It’s kinda easy when you’re listening to the G-Dub sound",
+    role: "Cinematography",
+    vertical: true,
+  },
 ];
