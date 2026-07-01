@@ -38,7 +38,7 @@ export function Hero() {
             {[
               { k: "Warm + cool", v: "Signature color" },
               { k: "Photo + motion", v: "Full production" },
-              { k: "Worldwide", v: "Available to travel" },
+              { k: "Community Driven", v: "Shooting within Canada" },
             ].map((s) => (
               <div key={s.k}>
                 <dt className="font-display text-xl text-cream">{s.k}</dt>
