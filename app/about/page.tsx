@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Vanna Noun — director of photography and photographer behind Renoun Creation.",
+    "Vanna Noun — cinematographer, videographer, and photographer specializing in branding, music videos, and documentaries.",
 };
 
 const approach = [
@@ -47,24 +47,25 @@ export default function AboutPage() {
           <div>
             <SectionHeading
               eyebrow={`${siteConfig.role} · ${siteConfig.brand}`}
-              title="I chase the warm/cool line for a living."
+              title="Aesthetic beauty, crafted storytelling."
             />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-cream-dim">
               <p>
-                I&apos;m Vanna Noun — a photographer and director of photography
-                working under the name Renoun Creation. I fell for the look of
-                film: the way Kodak Vision3 renders golden skin tones and lets the
-                shadows fall into deep, honest cyan.
+                I&apos;m Vanna Noun — a cinematographer, videographer, and
+                photographer working under the name Renoun Creation. I specialize in
+                branding, music videos, and documentaries: work built on aesthetic
+                beauty and crafted storytelling.
               </p>
               <p>
-                Whether it&apos;s a portrait, a brand film, or a music video, I&apos;m
-                after the same feeling — images that are cinematic and cozy at the
-                same time. Contrasty enough to hold your eye, warm enough to feel
-                like home.
+                My style is heavily cinéma vérité — real moments over staged ones,
+                with framing, composition, and emotion considered in every single
+                frame. A background in communications shapes how I tell stories: with
+                intention and meaning, always keeping your story at the center.
               </p>
               <p>
-                Based wherever the work takes me, and always happy to travel for the
-                right story.
+                If you&apos;re looking for a creator who cares as much about how
+                something feels as how it looks, I&apos;d love to hear about your next
+                project.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -76,6 +77,21 @@ export default function AboutPage() {
           </div>
         </Reveal>
       </div>
+
+      {/* Style pull-quote */}
+      <Reveal>
+        <figure className="grain relative mt-24 overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-teal-deep/40 via-surface to-orange-deep/25 px-6 py-14 text-center sm:px-12">
+          <span className="font-display text-6xl leading-none text-orange/40">“</span>
+          <blockquote className="mx-auto -mt-6 max-w-3xl font-display text-2xl italic leading-snug text-cream sm:text-3xl">
+            Framing, composition, and emotion — considered in every frame. My job
+            is to tell your story in a way that&apos;s meaningful, beautiful, and
+            unmistakably yours.
+          </blockquote>
+          <figcaption className="mt-6 text-xs uppercase tracking-[0.3em] text-teal-glow">
+            The Renoun approach
+          </figcaption>
+        </figure>
+      </Reveal>
 
       {/* Three C's */}
       <section className="mt-24">

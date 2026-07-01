@@ -10,18 +10,18 @@ import { siteConfig } from "@/lib/siteConfig";
 
 const services = [
   {
-    title: "Photography",
-    body: "Portraits, brands, and stories told in a single frame — warm skin tones, honest light, a cozy sense of place.",
+    title: "Branding",
+    body: "Films and photography that give a brand a look and a feeling — crafted, aesthetic, and unmistakably yours.",
     tone: "from-orange/20 to-transparent",
   },
   {
-    title: "Cinematography",
-    body: "Films, commercials, and music videos shot with a filmic eye — deep cyan shadows, motion that breathes.",
+    title: "Music videos",
+    body: "Visuals built around the sound — framing, motion, and emotion in step with the track, shot with a filmic eye.",
     tone: "from-teal/25 to-transparent",
   },
   {
-    title: "Color & finish",
-    body: "The Vision3 warm/cool grade that ties it all together — contrasty, complementary, never over-cooked.",
+    title: "Documentaries",
+    body: "Cinéma-vérité storytelling — real moments, honest emotion, and a communications background that keeps the story meaningful.",
     tone: "from-gold/20 to-transparent",
   },
 ];
@@ -55,7 +55,7 @@ export default function Home() {
         <Reveal>
           <SectionHeading
             eyebrow="What I do"
-            title="From first light to final grade"
+            title="Stories told in light and motion"
             align="center"
             className="mb-12"
           />
@@ -123,10 +123,11 @@ export default function Home() {
                 title="Hi, I'm Vanna."
               />
               <p className="mt-5 text-base leading-relaxed text-cream-dim">
-                I&apos;m a director of photography and photographer drawn to the warm,
-                contrasty look of film. My work lives on the line between warm and
-                cool — golden light on skin, deep teal in the shadows — for images
-                that feel cinematic and cozy at once.
+                I&apos;m a cinematographer, videographer, and photographer working
+                in branding, music videos, and documentaries. My work leans heavily
+                into cinéma vérité — framing, composition, and emotion in every
+                frame — with a communications background that keeps the story
+                meaningful and yours.
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <ButtonLink href="/about" variant="outline">

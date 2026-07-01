@@ -9,7 +9,7 @@ export const siteConfig = {
   role: "Director of Photography",
   tagline: "Cozy, contrasty, complementary.",
   intro:
-    "Photography & cinematography with a warm, cinematic soul — golden skin tones against deep cyan shadows, the way Vision3 sees light.",
+    "Cinematographer, videographer, and photographer crafting branding, music videos, and documentaries — driven by aesthetic beauty and honest, cinéma-vérité storytelling.",
   location: "Available for travel · based worldwide",
   email: "imrsteelo@gmail.com",
 
