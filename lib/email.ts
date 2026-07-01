@@ -6,7 +6,7 @@ import { siteConfig } from "./siteConfig";
  *
  * Designed to degrade gracefully: if RESEND_API_KEY is not set (e.g. in local
  * dev before an account exists), we log the payload and return a clear
- * "not configured" result instead of throwing — so the site stays usable.
+ * "not configured" result instead of throwing, so the site stays usable.
  *
  * To go live: create a Resend account, verify a sending domain (or use the
  * shared onboarding@resend.dev address for testing), then set in .env.local:
@@ -37,9 +37,9 @@ export async function sendNotification({
   replyTo,
 }: SendArgs): Promise<SendResult> {
   if (!apiKey) {
-    // Not configured yet — surface the payload in dev logs so nothing is lost.
+    // Not configured yet; surface the payload in dev logs so nothing is lost.
     console.warn(
-      "[email] RESEND_API_KEY missing — skipping send. Would have sent:",
+      "[email] RESEND_API_KEY missing; skipping send. Would have sent:",
       { to: toAddress, subject, replyTo },
     );
     return { ok: true, delivered: false, reason: "not-configured" };

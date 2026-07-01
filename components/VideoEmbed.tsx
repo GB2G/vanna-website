@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { Film } from "@/lib/portfolio";
 
 /**
- * Lite YouTube facade — shows the thumbnail and only loads the heavy iframe
+ * Lite YouTube facade that shows the thumbnail and only loads the heavy iframe
  * after the user clicks play. Keeps the portfolio fast.
  */
 export function VideoEmbed({ film }: { film: Film }) {

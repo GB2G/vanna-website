@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
-  Vanna Noun — Renoun Creation
+  Vanna Noun / Renoun Creation
   Theme: Kodak Vision3 "teal & orange" cinematic contrast.
   Cozy, contrasty, complementary. Warm skin/sunlight tones vs. deep cyan shadows
   on a near-black background.
@@ -15,13 +15,13 @@
   --color-surface-2: #1a2226;
   --color-line: #26313694; /* hairline borders */
 
-  /* Cool side — teals / cyans (shadows) */
+  /* Cool side: teals / cyans (shadows) */
   --color-teal-deep: #0c3b39;
   --color-teal: #0f766e;
   --color-teal-bright: #16b5a5;
   --color-teal-glow: #2dd4bf;
 
-  /* Warm side — oranges / gold (skin, sunlight) */
+  /* Warm side: oranges / gold (skin, sunlight) */
   --color-orange: #f97316;
   --color-orange-deep: #d9600f;
   --color-gold: #fbbf24;

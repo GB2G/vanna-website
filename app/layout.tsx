@@ -22,8 +22,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://renouncreation.com"),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.role} | ${siteConfig.brand}`,
-    template: `%s — ${siteConfig.brand}`,
+    default: `${siteConfig.name} · ${siteConfig.role} | ${siteConfig.brand}`,
+    template: `%s · ${siteConfig.brand}`,
   },
   description: siteConfig.intro,
   keywords: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "Vanna Noun",
   ],
   openGraph: {
-    title: `${siteConfig.name} — ${siteConfig.role}`,
+    title: `${siteConfig.name} · ${siteConfig.role}`,
     description: siteConfig.intro,
     siteName: siteConfig.brand,
     type: "website",

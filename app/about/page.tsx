@@ -8,17 +8,17 @@ import { siteConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Vanna Noun — cinematographer, videographer, and photographer specializing in branding, music videos, and documentaries.",
+    "Vanna Noun: cinematographer, videographer, and photographer specializing in branding, music videos, and documentaries.",
 };
 
 const approach = [
   {
     title: "Cozy",
-    body: "Sessions that feel relaxed and human. Good light, good company — the kind of set where people forget the camera is there.",
+    body: "Sessions that feel relaxed and human. Good light, good company, the kind of set where people forget the camera is there.",
   },
   {
     title: "Contrasty",
-    body: "Real depth in every frame. Bright, golden highlights held against rich, inky shadow — the drama that gives an image weight.",
+    body: "Real depth in every frame. Bright, golden highlights held against rich, inky shadow, the drama that gives an image weight.",
   },
   {
     title: "Complementary",
@@ -51,13 +51,13 @@ export default function AboutPage() {
             />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-cream-dim">
               <p>
-                I&apos;m Vanna Noun — a cinematographer, videographer, and
+                I&apos;m Vanna Noun, a cinematographer, videographer, and
                 photographer working under the name Renoun Creation. I specialize in
                 branding, music videos, and documentaries: work built on aesthetic
                 beauty and crafted storytelling.
               </p>
               <p>
-                My style is heavily cinéma vérité — real moments over staged ones,
+                My style is heavily cinéma vérité: real moments over staged ones,
                 with framing, composition, and emotion considered in every single
                 frame. A background in communications shapes how I tell stories: with
                 intention and meaning, always keeping your story at the center.
@@ -83,7 +83,7 @@ export default function AboutPage() {
         <figure className="grain relative mt-24 overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-teal-deep/40 via-surface to-orange-deep/25 px-6 py-14 text-center sm:px-12">
           <span className="font-display text-6xl leading-none text-orange/40">“</span>
           <blockquote className="mx-auto -mt-6 max-w-3xl font-display text-2xl italic leading-snug text-cream sm:text-3xl">
-            Framing, composition, and emotion — considered in every frame. My job
+            Framing, composition, and emotion, considered in every frame. My job
             is to tell your story in a way that&apos;s meaningful, beautiful, and
             unmistakably yours.
           </blockquote>

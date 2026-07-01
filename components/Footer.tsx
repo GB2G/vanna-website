@@ -71,7 +71,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.brand}. All rights reserved.
           </p>
-          <p className="text-muted/70">Shot on the warm/cool line — teal &amp; orange.</p>
+          <p className="text-muted/70">Shot on the warm/cool line: teal &amp; orange.</p>
         </div>
       </div>
     </footer>

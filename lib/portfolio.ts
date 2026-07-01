@@ -1,9 +1,9 @@
 /**
- * Portfolio content — PLACEHOLDERS.
+ * Portfolio content: PLACEHOLDERS.
  *
  * To publish Vanna's real work, replace `src` with hosted image URLs (or files
  * dropped in /public, referenced as "/my-photo.jpg") and swap the YouTube IDs.
- * Everything the galleries render is driven from this file — no component edits
+ * Everything the galleries render is driven from this file; no component edits
  * needed to change the content.
  */
 
@@ -42,7 +42,7 @@ const p = (
 
 export const photos: Photo[] = [
   p("1", "vanna-portrait-a", "Portrait", "portrait", "Portrait bathed in golden window light", true),
-  p("2", "vanna-cine-a", "Cinematic", "landscape", "Cinematic still — warm subject against deep teal shadow", true),
+  p("2", "vanna-cine-a", "Cinematic", "landscape", "Cinematic still: warm subject against deep teal shadow", true),
   p("3", "vanna-land-a", "Landscape", "landscape", "Sun-drenched landscape at golden hour", true),
   p("4", "vanna-portrait-b", "Portrait", "square", "Close portrait with soft amber highlights"),
   p("5", "vanna-cine-b", "Cinematic", "portrait", "Moody cinematic frame, teal and orange contrast", true),

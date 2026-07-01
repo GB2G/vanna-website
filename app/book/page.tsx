@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "Book a session",
   description:
-    "Request a photography or cinematography session with Vanna Noun — pick a date and share your details.",
+    "Request a photography or cinematography session with Vanna Noun. Pick a date and share your details.",
 };
 
 export default function BookPage() {

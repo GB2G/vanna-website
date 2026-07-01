@@ -101,7 +101,7 @@ export function ContactForm() {
         </div>
         <h3 className="mt-5 font-display text-2xl text-cream">Message sent</h3>
         <p className="mx-auto mt-3 max-w-md text-cream-dim">
-          Thanks for reaching out — I&apos;ll reply as soon as I can.
+          Thanks for reaching out! I&apos;ll reply as soon as I can.
         </p>
         <Button variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
           Send another

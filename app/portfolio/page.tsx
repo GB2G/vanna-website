@@ -8,7 +8,7 @@ import { photos, films } from "@/lib/portfolio";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "Photography and cinematography by Vanna Noun — cinematic teal & orange, cozy and contrasty.",
+    "Photography and cinematography by Vanna Noun: cinematic teal & orange, cozy and contrasty.",
 };
 
 export default function PortfolioPage() {
@@ -17,7 +17,7 @@ export default function PortfolioPage() {
       <SectionHeading
         eyebrow="The work"
         title="Portfolio"
-        subtitle="Placeholder imagery for now — Vanna's real photography and films slot straight into this layout."
+        subtitle="Placeholder imagery for now. Vanna's real photography and films slot straight into this layout."
       />
 
       {/* Photography */}

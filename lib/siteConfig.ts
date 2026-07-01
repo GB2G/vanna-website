@@ -1,5 +1,5 @@
 /**
- * Central site configuration — the single place to edit contact details,
+ * Central site configuration: the single place to edit contact details,
  * social links, and the session types offered in the booking form.
  */
 
@@ -9,7 +9,7 @@ export const siteConfig = {
   role: "Director of Photography",
   tagline: "Cozy, contrasty, complementary.",
   intro:
-    "Cinematographer, videographer, and photographer crafting branding, music videos, and documentaries — driven by aesthetic beauty and honest, cinéma-vérité storytelling.",
+    "Cinematographer, videographer, and photographer crafting branding, music videos, and documentaries, driven by aesthetic beauty and honest, cinéma-vérité storytelling.",
   location: "Available for travel · based worldwide",
   email: "imrsteelo@gmail.com",
 
@@ -30,9 +30,9 @@ export const siteConfig = {
 
   // Rough time windows offered on the booking form.
   timeSlots: [
-    "Morning (8am – 12pm)",
-    "Midday (12pm – 4pm)",
-    "Golden hour (4pm – sunset)",
+    "Morning (8am to 12pm)",
+    "Midday (12pm to 4pm)",
+    "Golden hour (4pm to sunset)",
     "Evening / night",
     "Flexible",
   ],

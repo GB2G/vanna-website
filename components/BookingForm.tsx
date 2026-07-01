@@ -110,7 +110,7 @@ export function BookingForm() {
         </div>
         <h3 className="mt-5 font-display text-2xl text-cream">Request received</h3>
         <p className="mx-auto mt-3 max-w-md text-cream-dim">
-          Thanks — I&apos;ll be in touch soon to confirm your session. If it&apos;s
+          Thanks! I&apos;ll be in touch soon to confirm your session. If it&apos;s
           urgent, email me directly at{" "}
           <a href={`mailto:${siteConfig.email}`} className="text-teal-glow hover:underline">
             {siteConfig.email}
@@ -189,7 +189,7 @@ export function BookingForm() {
             {status === "submitting" ? "Sending…" : "Request this date"}
           </Button>
           <p className="text-xs text-muted">
-            No payment now — I&apos;ll confirm availability by email.
+            No payment now. I&apos;ll confirm availability by email.
           </p>
         </div>
       </div>

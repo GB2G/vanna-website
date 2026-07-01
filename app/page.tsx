@@ -11,17 +11,17 @@ import { siteConfig } from "@/lib/siteConfig";
 const services = [
   {
     title: "Branding",
-    body: "Films and photography that give a brand a look and a feeling — crafted, aesthetic, and unmistakably yours.",
+    body: "Films and photography that give a brand a look and a feeling. Crafted, aesthetic, and unmistakably yours.",
     tone: "from-orange/20 to-transparent",
   },
   {
     title: "Music videos",
-    body: "Visuals built around the sound — framing, motion, and emotion in step with the track, shot with a filmic eye.",
+    body: "Visuals built around the sound: framing, motion, and emotion in step with the track, shot with a filmic eye.",
     tone: "from-teal/25 to-transparent",
   },
   {
     title: "Documentaries",
-    body: "Cinéma-vérité storytelling — real moments, honest emotion, and a communications background that keeps the story meaningful.",
+    body: "Cinéma-vérité storytelling: real moments, honest emotion, and a communications background that keeps the story meaningful.",
     tone: "from-gold/20 to-transparent",
   },
 ];
@@ -37,7 +37,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Selected frames"
             title="A look through the lens"
-            subtitle="A handful of favorites — the full portfolio lives one click away."
+            subtitle="A handful of favorites. The full portfolio lives one click away."
           />
         </Reveal>
         <div className="mt-10">
@@ -90,7 +90,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="In motion"
             title="Cinematography"
-            subtitle="Latest shorts from @renouncreation — more films in production."
+            subtitle="Latest shorts from @renouncreation. More films in production."
           />
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -125,8 +125,8 @@ export default function Home() {
               <p className="mt-5 text-base leading-relaxed text-cream-dim">
                 I&apos;m a cinematographer, videographer, and photographer working
                 in branding, music videos, and documentaries. My work leans heavily
-                into cinéma vérité — framing, composition, and emotion in every
-                frame — with a communications background that keeps the story
+                into cinéma vérité: framing, composition, and emotion in every
+                frame, backed by a communications background that keeps the story
                 meaningful and yours.
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
@@ -147,7 +147,7 @@ export default function Home() {
             Let&apos;s make something with soul.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-cream-dim">
-            Tell me about your project or pick a date — I&apos;ll take care of the light.
+            Tell me about your project or pick a date, and I&apos;ll take care of the light.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <ButtonLink href="/book">Book a session</ButtonLink>
