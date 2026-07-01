@@ -11,9 +11,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-16 sm:px-8 md:pt-24 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
         {/* Copy */}
         <div className="reveal">
-          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-teal-glow">
-            {siteConfig.role} · {siteConfig.brand}
-          </span>
+         
           <h1 className="mt-6 font-display text-5xl leading-[0.95] text-cream sm:text-6xl md:text-7xl">
             Light that feels{" "}
             <span className="bg-gradient-to-r from-teal-glow via-gold to-orange bg-clip-text text-transparent italic">
