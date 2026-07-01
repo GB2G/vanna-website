@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { BookingForm } from "@/components/BookingForm";
 import { siteConfig } from "@/lib/siteConfig";
@@ -28,7 +29,7 @@ export default function BookPage() {
           {siteConfig.email}
         </a>{" "}
         or use the{" "}
-        <a href="/contact" className="text-teal-glow hover:underline">contact form</a>.
+        <Link href="/contact" className="text-teal-glow hover:underline">contact form</Link>.
       </p>
     </div>
   );

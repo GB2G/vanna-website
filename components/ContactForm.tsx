@@ -9,7 +9,11 @@ const field =
   "w-full rounded-xl border border-line bg-ink-2 px-4 py-3 text-cream placeholder:text-muted/70 transition-colors focus:border-teal-glow focus:outline-none";
 const label = "mb-1.5 block text-sm text-cream-dim";
 
-type Status = "idle" | "submitting" | "success" | "error";
+// On the GitHub Pages static export the email API isn't available; show a
+// preview notice instead of attempting a request that can't succeed.
+const IS_STATIC = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
+
+type Status = "idle" | "submitting" | "success" | "error" | "preview";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -37,6 +41,11 @@ export function ContactForm() {
       return;
     }
     setErrors({});
+
+    if (IS_STATIC) {
+      setStatus("preview");
+      return;
+    }
     setStatus("submitting");
 
     try {
@@ -55,6 +64,31 @@ export function ContactForm() {
       setStatus("error");
       setServerError(err instanceof Error ? err.message : "Something went wrong.");
     }
+  }
+
+  if (status === "preview") {
+    return (
+      <div className="grain rounded-3xl border border-line bg-surface p-10 text-center">
+        <h3 className="font-display text-2xl text-cream">This is a preview site</h3>
+        <p className="mx-auto mt-3 max-w-md text-cream-dim">
+          The live contact form isn&apos;t connected on this preview deployment.
+          Reach me directly and I&apos;ll reply as soon as I can.
+        </p>
+        <a
+          href={`mailto:${siteConfig.email}`}
+          className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-teal to-teal-glow px-6 py-3 text-sm font-medium text-ink"
+        >
+          Email {siteConfig.email}
+        </a>
+        <button
+          type="button"
+          onClick={() => setStatus("idle")}
+          className="mt-4 block w-full text-sm text-muted hover:text-cream"
+        >
+          Back to form
+        </button>
+      </div>
+    );
   }
 
   if (status === "success") {

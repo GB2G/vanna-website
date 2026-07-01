@@ -1,0 +1,72 @@
+name: Deploy static preview to GitHub Pages
+
+# Builds a STATIC EXPORT of the site (visual preview only) and publishes it to
+# GitHub Pages. The Resend-powered booking/contact API routes do not run on
+# Pages, so app/api is stripped for this build and the forms show a "preview"
+# notice. The full email-sending site is meant for a host like Vercel.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow this workflow to publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; don't cancel an in-progress run.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Resolve base path
+        id: bp
+        # Project pages are served under /<repo>; a <user>.github.io repo is at root.
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          case "$REPO" in
+            *.github.io) echo "base_path=" >> "$GITHUB_OUTPUT" ;;
+            *) echo "base_path=/$REPO" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Strip server-only API routes (unsupported in static export)
+        run: rm -rf app/api
+
+      - name: Build static export
+        env:
+          GITHUB_PAGES: "true"
+          NEXT_PUBLIC_STATIC_EXPORT: "true"
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.bp.outputs.base_path }}
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

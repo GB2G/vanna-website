@@ -57,4 +57,24 @@ To go live:
 
 ## Deploying
 
-Deploy to [Vercel](https://vercel.com): import the repo, add the same env vars in project settings.
+### Vercel (full site — recommended)
+
+Import the repo into [Vercel](https://vercel.com) and add the same env vars in project settings.
+This runs the real app, so the booking + contact forms email through Resend.
+
+### GitHub Pages (static preview)
+
+A workflow at [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) publishes a
+**static preview** of the site on every push to `main`.
+
+One-time setup: in the repo, go to **Settings → Pages → Build and deployment → Source** and choose
+**GitHub Actions**. Push to `main` (or run the workflow manually) and it deploys to
+`https://<user>.github.io/<repo>/`.
+
+What the workflow does:
+- Builds a static export (`GITHUB_PAGES=true` → `output: "export"`, unoptimized images) into `out/`.
+- Auto-derives `basePath` from the repo name (root for a `<user>.github.io` repo).
+- Strips `app/api` for the build, since Pages can't run server routes.
+
+Because there's no server on Pages, the booking/contact forms show a **"preview site"** notice with a
+direct email button instead of sending. For working forms, use the Vercel deploy above.
