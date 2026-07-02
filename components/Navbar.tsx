@@ -37,7 +37,7 @@ export function Navbar() {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+      <nav className="flex w-full items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
         <Link href="/" className="group flex items-center gap-2.5">
           <ApertureIcon className="h-5 w-5 shrink-0 text-teal-glow transition-transform duration-700 ease-out group-hover:rotate-90" />
           <span className="flex flex-col leading-none">
