@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ButtonLink } from "./ui/Button";
+import { HeroTitle } from "./HeroTitle";
 import { RecBadge, ViewfinderCorners } from "./ui/Viewfinder";
 import { siteConfig } from "@/lib/siteConfig";
 import { featuredPhotos } from "@/lib/portfolio";
@@ -12,47 +13,12 @@ import { featuredPhotos } from "@/lib/portfolio";
  * prefers-reduced-motion.
  */
 
-// Headline split into words so each can animate in with its own delay.
-// `accent` words get the animated teal-to-orange shimmer.
-const LINE_ONE: { text: string; accent?: boolean }[] = [
-  { text: "Light" },
-  { text: "that" },
-  { text: "feels" },
-  { text: "cozy,", accent: true },
-];
-const LINE_TWO: { text: string; accent?: boolean }[] = [
-  { text: "Frames" },
-  { text: "that" },
-  { text: "feel" },
-  { text: "cinematic.", accent: true },
-];
-
-const STAGGER_MS = 110;
-
-function HeadlineWord({
-  word,
-  index,
-}: {
-  word: { text: string; accent?: boolean };
-  index: number;
-}) {
-  return (
-    <span
-      className={`hero-word mr-[0.28em] ${
-        word.accent
-          ? "hero-accent bg-gradient-to-r from-teal-glow via-gold to-orange bg-clip-text text-transparent italic"
-          : ""
-      }`}
-      style={{ "--word-delay": `${index * STAGGER_MS}ms` } as React.CSSProperties}
-    >
-      {word.text}
-    </span>
-  );
-}
+// Delay (ms) after mount before the supporting copy fades in, roughly in step
+// with the title typing out above it.
+const REVEAL_BASE_MS = 900;
 
 export function Hero() {
   const [a, b, c] = featuredPhotos;
-  const words = [...LINE_ONE, ...LINE_TWO];
 
   return (
     <section className="relative overflow-hidden">
@@ -109,24 +75,16 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-16 sm:px-8 md:pt-24 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
         {/* Copy */}
         <div>
-          <h1 className="mt-6 pb-1 font-display text-5xl leading-[1.15] text-cream sm:text-6xl md:text-7xl">
-            {LINE_ONE.map((w, i) => (
-              <HeadlineWord key={w.text} word={w} index={i} />
-            ))}
-            <br className="hidden sm:block" />
-            {LINE_TWO.map((w, i) => (
-              <HeadlineWord key={w.text} word={w} index={LINE_ONE.length + i} />
-            ))}
-          </h1>
+          <HeroTitle />
           <p
             className="reveal mt-6 max-w-xl text-lg leading-relaxed text-cream-dim"
-            style={{ animationDelay: `${words.length * STAGGER_MS + 100}ms` }}
+            style={{ animationDelay: `${REVEAL_BASE_MS + 100}ms` }}
           >
             {siteConfig.intro}
           </p>
           <div
             className="reveal mt-9 flex flex-wrap items-center gap-4"
-            style={{ animationDelay: `${words.length * STAGGER_MS + 250}ms` }}
+            style={{ animationDelay: `${REVEAL_BASE_MS + 250}ms` }}
           >
             <ButtonLink href="/book">Book a session</ButtonLink>
             <ButtonLink href="/portfolio" variant="outline">
@@ -143,7 +101,7 @@ export function Hero() {
                 key={s.k}
                 className="reveal"
                 style={{
-                  animationDelay: `${words.length * STAGGER_MS + 400 + i * 150}ms`,
+                  animationDelay: `${REVEAL_BASE_MS + 400 + i * 150}ms`,
                 }}
               >
                 <dt className="font-display text-xl text-cream">{s.k}</dt>

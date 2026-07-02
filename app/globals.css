@@ -196,6 +196,10 @@ h1, h2, h3, h4 {
 @keyframes hero-spin { to { transform: rotate(360deg); } }
 .hero-spin { animation: hero-spin 28s linear infinite; }
 
+/* Blinking caret for the typewriter title */
+@keyframes hero-caret-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.hero-caret { animation: hero-caret-blink 1.05s step-end infinite; }
+
 /* ---------- Viewfinder / photography motif ---------- */
 
 @keyframes vf-blink {
