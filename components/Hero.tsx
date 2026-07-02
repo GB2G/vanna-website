@@ -20,7 +20,7 @@ const LINE_ONE: { text: string; accent?: boolean }[] = [
   { text: "cozy,", accent: true },
 ];
 const LINE_TWO: { text: string; accent?: boolean }[] = [
-  { text: "frames" },
+  { text: "Frames" },
   { text: "that" },
   { text: "feel" },
   { text: "cinematic.", accent: true },
@@ -71,7 +71,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-16 sm:px-8 md:pt-24 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
         {/* Copy */}
         <div>
-          <h1 className="mt-6 font-display text-5xl leading-[1.02] text-cream sm:text-6xl md:text-7xl">
+          <h1 className="mt-6 pb-1 font-display text-5xl leading-[1.15] text-cream sm:text-6xl md:text-7xl">
             {LINE_ONE.map((w, i) => (
               <HeadlineWord key={w.text} word={w} index={i} />
             ))}
