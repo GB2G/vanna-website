@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { Film } from "@/lib/portfolio";
+import { RecBadge, ViewfinderCorners } from "./ui/Viewfinder";
 
 /**
  * Lite YouTube facade that shows the thumbnail and only loads the heavy iframe
@@ -46,6 +47,11 @@ export function VideoEmbed({ film }: { film: Film }) {
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <span className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+            <RecBadge className="absolute right-3 top-3" />
+            <ViewfinderCorners
+              tone="cream"
+              className="m-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
             <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-br from-gold to-orange text-ink shadow-[0_10px_40px_-6px_rgba(249,115,22,0.7)] transition-transform duration-300 group-hover:scale-110">
               <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6" fill="currentColor" aria-hidden="true">
                 <path d="M8 5v14l11-7z" />
@@ -59,7 +65,7 @@ export function VideoEmbed({ film }: { film: Film }) {
           <h3 className="font-display text-lg text-cream">{film.title}</h3>
           <p className="mt-1 text-sm text-muted">{film.role}</p>
         </div>
-        <span className="shrink-0 text-xs uppercase tracking-[0.2em] text-teal-glow/80">
+        <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.25em] text-teal-glow/80">
           {tag}
         </span>
       </figcaption>

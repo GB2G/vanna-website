@@ -3,6 +3,7 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
+import { ViewfinderCorners } from "@/components/ui/Viewfinder";
 import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -40,6 +41,13 @@ export default function AboutPage() {
               sizes="(max-width: 1024px) 90vw, 45vw"
               className="object-cover"
             />
+            <ViewfinderCorners tone="teal" className="m-3 opacity-70" />
+            <span
+              aria-hidden="true"
+              className="absolute bottom-3 left-4 font-mono text-[10px] uppercase tracking-[0.25em] text-cream/70"
+            >
+              Portrait · 85mm · ƒ/2.0
+            </span>
           </div>
         </Reveal>
 

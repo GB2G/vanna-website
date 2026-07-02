@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ButtonLink } from "./ui/Button";
+import { RecBadge, ViewfinderCorners } from "./ui/Viewfinder";
 import { siteConfig } from "@/lib/siteConfig";
 import { featuredPhotos } from "@/lib/portfolio";
 
@@ -66,6 +67,43 @@ export function Hero() {
           className="hero-orb bottom-[-20%] left-[30%] h-96 w-96 bg-teal-deep/40"
           style={{ animationDelay: "-11s" }}
         />
+      </div>
+
+      {/* Viewfinder / camera HUD overlay */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-3 z-0 sm:inset-6">
+        <ViewfinderCorners tone="cream" className="opacity-70" />
+
+        {/* Rule-of-thirds grid */}
+        <span className="absolute inset-y-0 left-1/3 hidden w-px bg-cream/[0.05] lg:block" />
+        <span className="absolute inset-y-0 left-2/3 hidden w-px bg-cream/[0.05] lg:block" />
+        <span className="absolute inset-x-0 top-1/3 hidden h-px bg-cream/[0.05] lg:block" />
+        <span className="absolute inset-x-0 top-2/3 hidden h-px bg-cream/[0.05] lg:block" />
+
+        {/* Center focus reticle */}
+        <span className="vf-breathe absolute left-1/2 top-1/2 hidden h-16 w-16 -translate-x-1/2 -translate-y-1/2 lg:block">
+          <span className="absolute inset-0 rounded-md border border-teal-glow/30" />
+          <span className="absolute left-1/2 top-0 h-2 w-px -translate-x-1/2 bg-teal-glow/50" />
+          <span className="absolute bottom-0 left-1/2 h-2 w-px -translate-x-1/2 bg-teal-glow/50" />
+          <span className="absolute left-0 top-1/2 h-px w-2 -translate-y-1/2 bg-teal-glow/50" />
+          <span className="absolute right-0 top-1/2 h-px w-2 -translate-y-1/2 bg-teal-glow/50" />
+        </span>
+
+        {/* HUD readouts */}
+        <div className="absolute left-2 top-2 flex items-center gap-3 sm:left-4 sm:top-4">
+          <RecBadge />
+          <span className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:inline">
+            A · 4K 24FPS
+          </span>
+        </div>
+        <span className="absolute right-2 top-2 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:right-4 sm:top-4 sm:inline">
+          ISO 800 · ƒ/1.8
+        </span>
+        <span className="absolute bottom-2 left-2 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:bottom-4 sm:left-4 sm:inline">
+          WB 5600K
+        </span>
+        <span className="absolute bottom-2 right-2 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:bottom-4 sm:right-4 sm:inline">
+          TC 00:00:24:12
+        </span>
       </div>
 
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-16 sm:px-8 md:pt-24 lg:grid-cols-[1.1fr_1fr] lg:gap-8">

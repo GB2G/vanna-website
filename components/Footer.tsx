@@ -10,7 +10,11 @@ const nav = [
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-line">
+    <footer className="mt-24">
+      <div
+        aria-hidden="true"
+        className="h-2.5 w-full border-y border-line bg-[repeating-linear-gradient(90deg,transparent_0,transparent_8px,rgba(244,236,226,0.07)_8px,rgba(244,236,226,0.07)_16px)]"
+      />
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ApertureIcon } from "./ui/Viewfinder";
 
 interface Props {
   eyebrow?: string;
@@ -21,6 +22,7 @@ export function SectionHeading({
       {eyebrow && (
         <span className="mb-3 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-teal-glow">
           <span className="h-px w-6 bg-gradient-to-r from-teal-glow to-orange" />
+          <ApertureIcon className="h-3.5 w-3.5 text-teal-glow" />
           {eyebrow}
         </span>
       )}

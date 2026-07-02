@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/siteConfig";
 import { ButtonLink } from "./ui/Button";
+import { ApertureIcon } from "./ui/Viewfinder";
 
 const links = [
   { href: "/", label: "Home" },
@@ -37,12 +38,15 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link href="/" className="group flex flex-col leading-none">
-          <span className="font-display text-lg tracking-tight text-cream">
-            {siteConfig.name}
-          </span>
-          <span className="text-[0.65rem] uppercase tracking-[0.3em] text-teal-glow/80 transition-colors group-hover:text-orange">
-            {siteConfig.brand}
+        <Link href="/" className="group flex items-center gap-2.5">
+          <ApertureIcon className="h-5 w-5 shrink-0 text-teal-glow transition-transform duration-700 ease-out group-hover:rotate-90" />
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-lg tracking-tight text-cream">
+              {siteConfig.name}
+            </span>
+            <span className="text-[0.65rem] uppercase tracking-[0.3em] text-teal-glow/80 transition-colors group-hover:text-orange">
+              {siteConfig.brand}
+            </span>
           </span>
         </Link>
 

@@ -7,6 +7,7 @@ import {
   type Photo,
   type PhotoCategory,
 } from "@/lib/portfolio";
+import { ViewfinderCorners } from "./ui/Viewfinder";
 
 type Filter = "All" | PhotoCategory;
 
@@ -98,8 +99,17 @@ export function GalleryGrid({ photos, showFilter = true }: Props) {
                     {photo.category}
                   </span>
                   {photo.alt}
+                  {photo.exif && (
+                    <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.2em] text-cream/60">
+                      {photo.exif}
+                    </span>
+                  )}
                 </span>
               </span>
+              <ViewfinderCorners
+                tone="orange"
+                className="m-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
             </div>
           </button>
         ))}
@@ -137,16 +147,27 @@ export function GalleryGrid({ photos, showFilter = true }: Props) {
             className="relative max-h-[85vh] w-auto max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={active.src}
-              alt={active.alt}
-              width={1200}
-              height={1200}
-              sizes="90vw"
-              className="max-h-[80vh] w-auto rounded-lg object-contain"
-            />
-            <figcaption className="mt-3 text-center text-sm text-muted">
-              <span className="text-teal-glow">{active.category}</span> · {active.alt}
+            <div className="relative">
+              <Image
+                src={active.src}
+                alt={active.alt}
+                width={1200}
+                height={1200}
+                sizes="90vw"
+                className="max-h-[80vh] w-auto rounded-lg object-contain"
+              />
+              <ViewfinderCorners tone="teal" className="-m-3 opacity-80" />
+            </div>
+            <figcaption className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-[0.25em] text-cream/70">
+              <span className="text-teal-glow">
+                FRAME {String((activeIndex ?? 0) + 1).padStart(2, "0")} /{" "}
+                {String(visible.length).padStart(2, "0")}
+              </span>
+              <span>{active.category}</span>
+              {active.exif && <span>{active.exif}</span>}
+              <span className="mt-1 w-full text-center font-sans text-xs normal-case tracking-normal text-muted">
+                {active.alt}
+              </span>
             </figcaption>
           </figure>
           <button

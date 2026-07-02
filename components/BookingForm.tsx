@@ -6,6 +6,7 @@ import "react-day-picker/style.css";
 import { siteConfig } from "@/lib/siteConfig";
 import { bookingSchema } from "@/lib/validation";
 import { Button } from "./ui/Button";
+import { ViewfinderCorners } from "./ui/Viewfinder";
 
 const field =
   "w-full rounded-xl border border-line bg-ink-2 px-4 py-3 text-cream placeholder:text-muted/70 transition-colors focus:border-teal-glow focus:outline-none";
@@ -197,7 +198,8 @@ export function BookingForm() {
       {/* Calendar */}
       <div className="order-1 lg:order-2">
         <label className={label}>Pick a date</label>
-        <div className="grain inline-block rounded-2xl border border-line bg-surface p-4">
+        <div className="grain relative inline-block rounded-2xl border border-line bg-surface p-4">
+          <ViewfinderCorners tone="teal" className="m-1.5 opacity-50" />
           <DayPicker
             mode="single"
             selected={date}

@@ -196,6 +196,20 @@ h1, h2, h3, h4 {
 @keyframes hero-spin { to { transform: rotate(360deg); } }
 .hero-spin { animation: hero-spin 28s linear infinite; }
 
+/* ---------- Viewfinder / photography motif ---------- */
+
+@keyframes vf-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.vf-blink { animation: vf-blink 1.6s ease-in-out infinite; }
+
+@keyframes vf-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(0.94); opacity: 1; }
+}
+.vf-breathe { animation: vf-breathe 4s ease-in-out infinite; }
+
 /* react-day-picker theming */
 .rdp-root {
   --rdp-accent-color: var(--color-orange);

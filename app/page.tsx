@@ -68,8 +68,8 @@ export default function Home() {
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${s.tone}`}
                 />
                 <div className="relative">
-                  <span className="font-display text-sm text-teal-glow">
-                    0{i + 1}
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-teal-glow">
+                    Scene 0{i + 1}
                   </span>
                   <h3 className="mt-3 font-display text-2xl text-cream">
                     {s.title}

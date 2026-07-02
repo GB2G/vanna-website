@@ -17,6 +17,8 @@ export interface Photo {
   /** Aspect ratio hint for the masonry layout. */
   ratio: "portrait" | "landscape" | "square";
   featured?: boolean;
+  /** Camera HUD readout, e.g. "ƒ/1.8 · 1/250 · ISO 100 · 35mm" */
+  exif?: string;
 }
 
 // Seeded placeholder photos (photographic, guaranteed to resolve).
@@ -31,6 +33,7 @@ const p = (
   ratio: Photo["ratio"],
   alt: string,
   featured = false,
+  exif?: string,
 ): Photo => ({
   id,
   src: `https://picsum.photos/seed/${seed}/${dim(ratio)}`,
@@ -38,21 +41,22 @@ const p = (
   category,
   ratio,
   featured,
+  exif,
 });
 
 export const photos: Photo[] = [
-  p("1", "vanna-portrait-a", "Portrait", "portrait", "Portrait bathed in golden window light", true),
-  p("2", "vanna-cine-a", "Cinematic", "landscape", "Cinematic still: warm subject against deep teal shadow", true),
-  p("3", "vanna-land-a", "Landscape", "landscape", "Sun-drenched landscape at golden hour", true),
-  p("4", "vanna-portrait-b", "Portrait", "square", "Close portrait with soft amber highlights"),
-  p("5", "vanna-cine-b", "Cinematic", "portrait", "Moody cinematic frame, teal and orange contrast", true),
-  p("6", "vanna-event-a", "Event", "landscape", "Candid event moment in warm ambient light"),
-  p("7", "vanna-land-b", "Landscape", "portrait", "Misty forest with cool cyan depth"),
-  p("8", "vanna-portrait-c", "Portrait", "portrait", "Environmental portrait, natural window glow", true),
-  p("9", "vanna-cine-c", "Cinematic", "landscape", "Night scene, neon warmth against cyan"),
-  p("10", "vanna-event-b", "Event", "square", "Celebration captured with cozy warmth"),
-  p("11", "vanna-land-c", "Landscape", "landscape", "Coastline at dusk, teal water and amber sky"),
-  p("12", "vanna-portrait-d", "Portrait", "square", "Studio portrait with directional warm key light"),
+  p("1", "vanna-portrait-a", "Portrait", "portrait", "Portrait bathed in golden window light", true, "ƒ/1.8 · 1/200 · ISO 100 · 85mm"),
+  p("2", "vanna-cine-a", "Cinematic", "landscape", "Cinematic still: warm subject against deep teal shadow", true, "ƒ/2.8 · 1/125 · ISO 400 · 50mm"),
+  p("3", "vanna-land-a", "Landscape", "landscape", "Sun-drenched landscape at golden hour", true, "ƒ/8 · 1/500 · ISO 100 · 24mm"),
+  p("4", "vanna-portrait-b", "Portrait", "square", "Close portrait with soft amber highlights", false, "ƒ/1.8 · 1/320 · ISO 100 · 85mm"),
+  p("5", "vanna-cine-b", "Cinematic", "portrait", "Moody cinematic frame, teal and orange contrast", true, "ƒ/2 · 1/60 · ISO 800 · 35mm"),
+  p("6", "vanna-event-a", "Event", "landscape", "Candid event moment in warm ambient light", false, "ƒ/2.8 · 1/250 · ISO 400 · 35mm"),
+  p("7", "vanna-land-b", "Landscape", "portrait", "Misty forest with cool cyan depth", false, "ƒ/8 · 1/250 · ISO 200 · 24mm"),
+  p("8", "vanna-portrait-c", "Portrait", "portrait", "Environmental portrait, natural window glow", true, "ƒ/1.4 · 1/400 · ISO 100 · 85mm"),
+  p("9", "vanna-cine-c", "Cinematic", "landscape", "Night scene, neon warmth against cyan", false, "ƒ/1.8 · 1/60 · ISO 3200 · 35mm"),
+  p("10", "vanna-event-b", "Event", "square", "Celebration captured with cozy warmth", false, "ƒ/2.8 · 1/160 · ISO 640 · 50mm"),
+  p("11", "vanna-land-c", "Landscape", "landscape", "Coastline at dusk, teal water and amber sky", false, "ƒ/8 · 1/2000 · ISO 100 · 24mm"),
+  p("12", "vanna-portrait-d", "Portrait", "square", "Studio portrait with directional warm key light", false, "ƒ/2 · 1/200 · ISO 200 · 85mm"),
 ];
 
 export const featuredPhotos = photos.filter((ph) => ph.featured);
