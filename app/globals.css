@@ -118,6 +118,84 @@ h1, h2, h3, h4 {
   animation: rise 0.8s var(--ease-out-soft) forwards;
 }
 
+/* ---------- Hero animations ---------- */
+
+/* Staggered word reveal: each word rises + unblurs into place */
+@keyframes hero-word {
+  from { opacity: 0; transform: translateY(0.6em) rotate(2deg); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0) rotate(0deg); filter: blur(0); }
+}
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-word 0.9s var(--ease-out-soft) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+
+/* Shimmering gradient sweep across the accent words */
+@keyframes hero-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.hero-accent {
+  background-size: 200% auto;
+  animation: hero-shimmer 5s linear infinite;
+}
+/* When a word is both revealed and shimmering, run both animations */
+.hero-word.hero-accent {
+  animation:
+    hero-word 0.9s var(--ease-out-soft) var(--word-delay, 0ms) forwards,
+    hero-shimmer 5s linear infinite;
+}
+
+/* Slow Ken Burns drift for hero photos */
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1.5%, 1.5%); }
+}
+.hero-kenburns {
+  animation: kenburns 14s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.hero-kenburns-alt {
+  animation: kenburns 18s ease-in-out infinite alternate-reverse;
+  will-change: transform;
+}
+
+/* Gentle vertical float for the photo cards */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.hero-float { animation: hero-float 7s ease-in-out infinite; }
+.hero-float-late { animation: hero-float 9s ease-in-out 1.2s infinite; }
+
+/* Drifting light orbs behind the hero */
+@keyframes hero-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.15); }
+  66% { transform: translate(-30px, 25px) scale(0.9); }
+}
+.hero-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: hero-orb 16s ease-in-out infinite;
+}
+
+/* Scroll cue: a small dot sliding down a pill outline */
+@keyframes hero-scroll-dot {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+.hero-scroll-dot { animation: hero-scroll-dot 2s ease-in-out infinite; }
+
+/* Slow spin for the decorative dashed ring */
+@keyframes hero-spin { to { transform: rotate(360deg); } }
+.hero-spin { animation: hero-spin 28s linear infinite; }
+
 /* react-day-picker theming */
 .rdp-root {
   --rdp-accent-color: var(--color-orange);
