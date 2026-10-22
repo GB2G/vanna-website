@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://renouncreation.com"),
+  metadataBase: new URL("https://vannathedp.com"),
   title: {
     default: `${siteConfig.name} · ${siteConfig.role} | ${siteConfig.brand}`,
     template: `%s · ${siteConfig.brand}`,
