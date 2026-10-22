@@ -6,47 +6,76 @@ import { siteConfig } from "@/lib/siteConfig";
 import { featuredPhotos } from "@/lib/portfolio";
 
 /**
- * Animated hero: staggered word reveal with a shimmering gradient on the
- * accent words, Ken Burns drift + gentle float on the photo cluster, drifting
- * light orbs behind everything, and a scroll cue. All animation is CSS-driven
- * (see "Hero animations" in globals.css) and is disabled globally under
- * prefers-reduced-motion.
+ * Full-frame cinematic hero: the viewport becomes the camera's viewfinder.
+ * A set of his graded frames cross-fades full-bleed behind an anamorphic
+ * letterbox and a camera HUD (REC, exposure readouts, focus reticle, rule of
+ * thirds), with the typewriter title set like a film title card, lower-left.
+ * The viewfinder framing is the one signature; everything else stays quiet.
+ * All motion is CSS-driven and disabled under prefers-reduced-motion (the first
+ * frame keeps base opacity so the backdrop still shows).
  */
 
-// Delay (ms) after mount before the supporting copy fades in, roughly in step
-// with the title typing out above it.
-const REVEAL_BASE_MS = 900;
+const HUD = "font-mono text-[10px] uppercase tracking-[0.25em] text-cream/55";
 
 export function Hero() {
-  const [a, b, c] = featuredPhotos;
+  const frames = featuredPhotos.slice(0, 3);
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Drifting light orbs */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10">
-        <div className="hero-orb left-[-8%] top-[5%] h-72 w-72 bg-teal/25" />
-        <div
-          className="hero-orb right-[-6%] top-[20%] h-80 w-80 bg-orange/20"
-          style={{ animationDelay: "-6s" }}
-        />
-        <div
-          className="hero-orb bottom-[-20%] left-[30%] h-96 w-96 bg-teal-deep/40"
-          style={{ animationDelay: "-11s" }}
-        />
+    <section className="relative isolate flex min-h-[92svh] flex-col overflow-hidden">
+      {/* Backdrop: cross-fading graded frames */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink">
+        {frames.map((f, i) => (
+          <div
+            key={f.id}
+            className={`hero-cross absolute inset-0 ${i === 0 ? "opacity-100" : "opacity-0"}`}
+            style={{ animationDelay: `${i * -8}s` }}
+          >
+            <Image
+              src={f.src}
+              alt=""
+              fill
+              priority={i === 0}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
+
+        {/* Color grade: cool shadows lower-left, warm highlight upper-right */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-teal-deep/70 via-ink/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-bl from-orange/25 via-transparent to-transparent" />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_42%,rgba(10,13,15,0.72)_100%)]" />
+        {/* Legibility scrims: strong at the bottom (title) and a touch at the top (nav) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/70 to-transparent" />
       </div>
 
-      {/* Viewfinder / camera HUD overlay */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-3 z-0 sm:inset-6">
+      {/* Anamorphic letterbox bars */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[clamp(14px,4.5vh,52px)] bg-ink"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[clamp(14px,4.5vh,52px)] bg-ink"
+      />
+
+      {/* Viewfinder HUD, framed inside the letterbox */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-3 z-20 top-[clamp(74px,12vh,120px)] bottom-[clamp(58px,9vh,96px)] sm:inset-x-6"
+      >
         <ViewfinderCorners tone="cream" className="opacity-70" />
 
         {/* Rule-of-thirds grid */}
-        <span className="absolute inset-y-0 left-1/3 hidden w-px bg-cream/[0.05] lg:block" />
-        <span className="absolute inset-y-0 left-2/3 hidden w-px bg-cream/[0.05] lg:block" />
-        <span className="absolute inset-x-0 top-1/3 hidden h-px bg-cream/[0.05] lg:block" />
-        <span className="absolute inset-x-0 top-2/3 hidden h-px bg-cream/[0.05] lg:block" />
+        <span className="absolute inset-y-0 left-1/3 hidden w-px bg-cream/[0.06] lg:block" />
+        <span className="absolute inset-y-0 left-2/3 hidden w-px bg-cream/[0.06] lg:block" />
+        <span className="absolute inset-x-0 top-1/3 hidden h-px bg-cream/[0.06] lg:block" />
+        <span className="absolute inset-x-0 top-2/3 hidden h-px bg-cream/[0.06] lg:block" />
 
         {/* Center focus reticle */}
-        <span className="vf-breathe absolute left-1/2 top-1/2 hidden h-16 w-16 -translate-x-1/2 -translate-y-1/2 lg:block">
+        <span className="vf-breathe absolute left-1/2 top-1/2 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 lg:block">
           <span className="absolute inset-0 rounded-md border border-teal-glow/30" />
           <span className="absolute left-1/2 top-0 h-2 w-px -translate-x-1/2 bg-teal-glow/50" />
           <span className="absolute bottom-0 left-1/2 h-2 w-px -translate-x-1/2 bg-teal-glow/50" />
@@ -54,127 +83,53 @@ export function Hero() {
           <span className="absolute right-0 top-1/2 h-px w-2 -translate-y-1/2 bg-teal-glow/50" />
         </span>
 
-        {/* HUD readouts */}
-        <div className="absolute left-2 top-2 flex items-center gap-3 sm:left-4 sm:top-4">
+        {/* Corner readouts */}
+        <div className="absolute left-1 top-1 flex items-center gap-3 sm:left-2 sm:top-2">
           <RecBadge />
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:inline">
-            A · 4K 24FPS
-          </span>
+          <span className={`hidden sm:inline ${HUD}`}>A · 4K 24FPS</span>
         </div>
-        <span className="absolute right-2 top-2 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:right-4 sm:top-4 sm:inline">
+        <span className={`absolute right-1 top-1 hidden sm:right-2 sm:top-2 sm:inline ${HUD}`}>
           ISO 800 · ƒ/1.8
         </span>
-        <span className="absolute bottom-2 left-2 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:bottom-4 sm:left-4 sm:inline">
+        <span className={`absolute bottom-1 left-1 hidden sm:bottom-2 sm:left-2 sm:inline ${HUD}`}>
           WB 5600K
         </span>
-        <span className="absolute bottom-2 right-2 hidden font-mono text-[10px] uppercase tracking-[0.25em] text-cream/50 sm:bottom-4 sm:right-4 sm:inline">
+        <span className={`absolute bottom-1 right-1 hidden sm:bottom-2 sm:right-2 sm:inline ${HUD}`}>
           TC 00:00:24:12
         </span>
       </div>
 
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-16 sm:px-8 md:pt-24 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
-        {/* Copy */}
-        <div>
+      {/* Content: title card, lower-left */}
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-end gap-10 px-5 pb-[clamp(72px,11vh,120px)] pt-[22vh] sm:px-8">
+        <div className="max-w-3xl [text-shadow:0_2px_30px_rgba(10,13,15,0.6)]">
           <HeroTitle />
-          <p
-            className="reveal mt-6 max-w-xl text-lg leading-relaxed text-cream-dim"
-            style={{ animationDelay: `${REVEAL_BASE_MS + 100}ms` }}
-          >
+          <p className="reveal mt-6 max-w-xl text-lg leading-relaxed text-cream/85 [animation-delay:1100ms]">
             {siteConfig.intro}
           </p>
-          <div
-            className="reveal mt-9 flex flex-wrap items-center gap-4"
-            style={{ animationDelay: `${REVEAL_BASE_MS + 250}ms` }}
-          >
+          <div className="reveal mt-8 flex flex-wrap items-center gap-4 [animation-delay:1300ms]">
             <ButtonLink href="/book">Book a session</ButtonLink>
             <ButtonLink href="/portfolio" variant="outline">
               View the work
             </ButtonLink>
           </div>
-          <dl className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
-            {[
-              { k: "Warm + cool", v: "Signature color" },
-              { k: "Photo + motion", v: "Full production" },
-              { k: "Community Driven", v: "Shooting within Canada" },
-            ].map((s, i) => (
-              <div
-                key={s.k}
-                className="reveal"
-                style={{
-                  animationDelay: `${REVEAL_BASE_MS + 400 + i * 150}ms`,
-                }}
-              >
-                <dt className="font-display text-xl text-cream">{s.k}</dt>
-                <dd className="text-xs uppercase tracking-[0.2em] text-muted">{s.v}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
-        {/* Image cluster */}
-        <div className="relative mx-auto grid w-full max-w-md grid-cols-2 gap-4 lg:max-w-none">
-          {/* Decorative slow-spinning dashed ring behind the cluster */}
-          <div
-            aria-hidden="true"
-            className="hero-spin absolute -right-10 -top-10 h-44 w-44 rounded-full border border-dashed border-teal-glow/25"
-          />
-
-          <div className="reveal col-span-1 mt-8 [animation-delay:200ms]">
-            <div className="hero-float grain relative aspect-[3/4] overflow-hidden rounded-2xl border border-line shadow-[0_20px_60px_-20px_rgba(45,212,191,0.25)]">
-              {a && (
-                <Image
-                  src={a.src}
-                  alt={a.alt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 45vw, 25vw"
-                  className="hero-kenburns object-cover"
-                />
-              )}
-              <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <div className="reveal [animation-delay:350ms]">
-              <div className="hero-float-late grain relative aspect-[4/3] overflow-hidden rounded-2xl border border-line shadow-[0_20px_60px_-20px_rgba(249,115,22,0.3)]">
-                {b && (
-                  <Image
-                    src={b.src}
-                    alt={b.alt}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 45vw, 25vw"
-                    className="hero-kenburns-alt object-cover"
-                  />
-                )}
-                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
-              </div>
-            </div>
-            <div className="reveal [animation-delay:500ms]">
-              <div className="hero-float grain relative aspect-square overflow-hidden rounded-2xl border border-line shadow-[0_20px_60px_-20px_rgba(45,212,191,0.25)]">
-                {c && (
-                  <Image
-                    src={c.src}
-                    alt={c.alt}
-                    fill
-                    sizes="(max-width: 1024px) 45vw, 25vw"
-                    className="hero-kenburns object-cover"
-                  />
-                )}
-                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
-              </div>
-            </div>
-          </div>
+        {/* Slate credit line, the subject-true replacement for a stats row */}
+        <div className="reveal flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-cream/10 pt-4 [animation-delay:1600ms]">
+          <span className={HUD}>{siteConfig.role}</span>
+          <span className="text-cream/25">/</span>
+          <span className={HUD}>{siteConfig.brand}</span>
+          <span className="text-cream/25">/</span>
+          <span className={HUD}>Available worldwide</span>
         </div>
       </div>
 
       {/* Scroll cue */}
       <div
         aria-hidden="true"
-        className="reveal mb-4 flex justify-center [animation-delay:1800ms]"
+        className="reveal absolute bottom-[clamp(18px,5vh,60px)] left-1/2 z-30 -translate-x-1/2 [animation-delay:1900ms]"
       >
-        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-line pt-2">
+        <div className="flex h-9 w-5 items-start justify-center rounded-full border border-cream/25 pt-1.5">
           <span className="hero-scroll-dot block h-1.5 w-1.5 rounded-full bg-gradient-to-b from-teal-glow to-orange" />
         </div>
       </div>

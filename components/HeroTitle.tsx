@@ -15,10 +15,10 @@ const ACCENT =
   "hero-accent bg-gradient-to-r from-teal-glow via-gold to-orange bg-clip-text text-transparent italic";
 
 // Each line is a plain leading part plus a trailing accent (gradient) part.
-const L1_PLAIN = "Light that feels ";
-const L1_ACCENT = "cozy,";
-const L2_PLAIN = "Frames that feel ";
-const L2_ACCENT = "cinematic.";
+const L1_PLAIN = "Your story,";
+const L1_ACCENT = "";
+const L2_PLAIN = "shot ";
+const L2_ACCENT = "with intention.";
 
 const LINE1_LEN = L1_PLAIN.length + L1_ACCENT.length;
 const TOTAL = LINE1_LEN + L2_PLAIN.length + L2_ACCENT.length;

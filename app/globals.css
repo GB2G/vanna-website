@@ -200,6 +200,19 @@ h1, h2, h3, h4 {
 @keyframes hero-caret-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 .hero-caret { animation: hero-caret-blink 1.05s step-end infinite; }
 
+/* Cinematic crossfade + slow push-in for the full-frame hero backdrop.
+   Three stacked frames staggered by a third of the loop keep one graded
+   still on screen at all times. First frame has base opacity 1 so the
+   backdrop still shows when motion is reduced. */
+@keyframes hero-cross {
+  0%   { opacity: 0; transform: scale(1.04); }
+  5%   { opacity: 1; }
+  33%  { opacity: 1; }
+  38%  { opacity: 0; }
+  100% { opacity: 0; transform: scale(1.12); }
+}
+.hero-cross { animation: hero-cross 24s ease-in-out infinite; will-change: opacity, transform; }
+
 /* ---------- Viewfinder / photography motif ---------- */
 
 @keyframes vf-blink {
