@@ -51,17 +51,7 @@ export function Hero() {
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/70 to-transparent" />
       </div>
 
-      {/* Anamorphic letterbox bars */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[clamp(14px,4.5vh,52px)] bg-ink"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[clamp(14px,4.5vh,52px)] bg-ink"
-      />
-
-      {/* Viewfinder HUD, framed inside the letterbox */}
+      {/* Viewfinder HUD, framed within the viewport */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-3 z-20 top-[clamp(74px,12vh,120px)] bottom-[clamp(58px,9vh,96px)] sm:inset-x-6"
